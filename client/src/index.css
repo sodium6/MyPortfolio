@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  font-family: 'Inter', system-ui, sans-serif;
-  --color-background: #0f0f18;
-  --color-foreground: #f3f4f6;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-muted-foreground: #9ca3af;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  --bg: #000000;
+  --fg: #ffffff;
+  --pad-x: clamp(20px, 6.95vw, 120px);
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-muted-foreground: #a1a1aa;
 }
 
 *,
@@ -14,11 +17,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: #07070d;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -27,31 +34,31 @@ body {
 
 #root {
   min-height: 100vh;
+  background: #000000;
 }
 
 ::selection {
-  background: #7c3aed;
-  color: white;
+  background: #ffffff;
+  color: #000000;
 }
 
-/* Custom Sleek Dark Cyber Scrollbar (Eliminates white Windows scrollbar) */
+/* Custom Sleek Dark Minimal Monochrome Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(10, 10, 18, 0.8);
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.4);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 9999px;
-  border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.7);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Modal Animations */
@@ -98,4 +105,75 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Luxury Editorial & Architectural Keyframes */
+@keyframes word-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes grid-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes underline-grow {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-5px) translateX(-3px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-15px) translateX(7px);
+    opacity: 0.8;
+  }
 }
