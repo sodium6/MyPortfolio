@@ -68,27 +68,47 @@ const ThreeHeroCanvas = ({ className = '' }) => {
         const masterGroup = new THREE.Group();
         scene.add(masterGroup);
 
-        // Dynamic positioning: Shift core cleanly to the right side of the hero
+        // Dynamic positioning: Shift core cleanly to the right on desktop, or behind avatar on mobile
         const updateGroupPosition = (w, h) => {
             const vHalfHeight = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z;
             const vHalfWidth = vHalfHeight * (w / h);
 
             if (w >= 1280) {
-                // Generously shifted to the right (around 56% of visible half-width)
+                // Desktop / Ultrawide: Generously shifted to the right
                 masterGroup.position.set(vHalfWidth * 0.56, 0.0, 0);
+                masterGroup.scale.set(1.0, 1.0, 1.0);
+                if (containerRef.current) {
+                    containerRef.current.style.setProperty('--mask-radial', 'radial-gradient(ellipse at 80% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%)');
+                }
             } else if (w >= 1024) {
+                // Notebook / Laptop: Original right-side placement
                 masterGroup.position.set(vHalfWidth * 0.52, 0.0, 0);
+                masterGroup.scale.set(1.0, 1.0, 1.0);
+                if (containerRef.current) {
+                    containerRef.current.style.setProperty('--mask-radial', 'radial-gradient(ellipse at 80% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%)');
+                }
             } else if (w >= 768) {
+                // Tablet: Medium shifted right
                 masterGroup.position.set(vHalfWidth * 0.44, -0.2, -1.5);
+                masterGroup.scale.set(1.0, 1.0, 1.0);
+                if (containerRef.current) {
+                    containerRef.current.style.setProperty('--mask-radial', 'radial-gradient(ellipse at 75% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%)');
+                }
             } else {
-                // On mobile screens, position centered behind with depth offset
-                masterGroup.position.set(0, -0.8, -4.5);
+                // Mobile phone: Positioned directly behind the profile avatar image
+                // The circular avatar is at top center, so position 3D core directly behind it
+                const avatarOffsetY = vHalfHeight * 0.68;
+                masterGroup.position.set(0, avatarOffsetY, -1.0);
+                masterGroup.scale.set(0.64, 0.64, 0.64);
+                if (containerRef.current) {
+                    containerRef.current.style.setProperty('--mask-radial', 'radial-gradient(circle 175px at 50% 19%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%)');
+                }
             }
 
             // Sync lights around the 3D core position
-            purpleLight.position.set(masterGroup.position.x + 5, 8, 8);
-            cyanLight.position.set(masterGroup.position.x - 5, -6, -6);
-            pinkLight.position.set(masterGroup.position.x + 2, -4, 6);
+            purpleLight.position.set(masterGroup.position.x + 5, masterGroup.position.y + 6, 8);
+            cyanLight.position.set(masterGroup.position.x - 5, masterGroup.position.y - 4, -4);
+            pinkLight.position.set(masterGroup.position.x + 2, masterGroup.position.y - 2, 6);
         };
 
         updateGroupPosition(width, height);
@@ -477,8 +497,8 @@ const ThreeHeroCanvas = ({ className = '' }) => {
             ref={containerRef}
             className={`w-full h-full cursor-grab active:cursor-grabbing touch-none select-none ${className}`}
             style={{
-                maskImage: 'radial-gradient(ellipse at 80% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%)',
-                WebkitMaskImage: 'radial-gradient(ellipse at 80% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%)'
+                maskImage: 'var(--mask-radial, radial-gradient(ellipse at 80% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%))',
+                WebkitMaskImage: 'var(--mask-radial, radial-gradient(ellipse at 80% 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%))'
             }}
         />
     );
