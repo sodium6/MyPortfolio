@@ -3,6 +3,8 @@ import ContributionSkyline from '@/components/ui/contribution-skyline';
 import ThreeGlassRefractionHero from '@/components/ui/ThreeGlassRefractionHero';
 import ModalHologramCanvas from '@/components/ui/ModalHologramCanvas';
 import ProjectCard3D from '@/components/ui/ProjectCard3D';
+import SubtleTechBackground from '@/components/ui/SubtleTechBackground';
+import NeuralSphereCanvas from '@/components/ui/NeuralSphereCanvas';
 import {
   Brain,
   Cpu,
@@ -693,8 +695,11 @@ const HomePage = () => {
         </section>
 
         {/* === 3. SELECTED WORKS (CLEAN 3x3 EXECUTIVE DOSSIER) === */}
-        <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 md:px-10 lg:px-14 border-t border-white/10 bg-black">
-          <div className="max-w-[1520px] mx-auto space-y-10">
+        <section id="projects" className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6 md:px-10 lg:px-14 bg-black">
+          {/* Subtle Technical Ambient Background (Fine grid, micro data-nodes & cursor spotlight) */}
+          <SubtleTechBackground variant="projects" />
+
+          <div className="relative z-10 max-w-[1520px] mx-auto space-y-10">
             {/* Header & Controls */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
               <div>
@@ -789,8 +794,11 @@ const HomePage = () => {
         </section>
 
         {/* === 4. TECHNICAL SKILLS MATRIX === */}
-        <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 md:px-10 lg:px-14 border-t border-white/10 bg-black">
-          <div className="max-w-[1520px] mx-auto space-y-8">
+        <section id="skills" className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6 md:px-10 lg:px-14 bg-black">
+          {/* Subtle Technical Ambient Background */}
+          <SubtleTechBackground variant="skills" />
+
+          <div className="relative z-10 max-w-[1520px] mx-auto space-y-8">
             <div>
               <span className="text-xs uppercase tracking-[0.25em] text-white/50 block mb-2 font-mono">
                 Competencies & Tooling
@@ -838,7 +846,7 @@ const HomePage = () => {
         </section>
 
         {/* === 5. GITHUB ACTIVITY & 3D SKYLINE (MONOCHROME PALETTE) === */}
-        <section id="github" className="py-20 sm:py-28 px-4 sm:px-6 md:px-10 lg:px-14 border-t border-white/10 bg-black">
+        <section id="github" className="py-20 sm:py-28 px-4 sm:px-6 md:px-10 lg:px-14 bg-black">
           <div className="max-w-[1520px] mx-auto space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
@@ -889,88 +897,122 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* === 6. CONTACT & CONNECT SECTION === */}
-        <section id="contact" className="py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-20 border-t border-white/10 bg-black">
-          <div className="max-w-7xl mx-auto">
-            <div className="relative bg-gradient-to-b from-white/[0.04] to-black border border-white/15 rounded-3xl p-8 sm:p-12 md:p-16 overflow-hidden">
-              <div className="max-w-3xl mb-10">
-                <span className="text-xs uppercase tracking-[0.25em] text-white/50 block mb-2 font-mono">
-                  Let's Collaborate
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-                  Ready to Build Next-Generation AI Systems?
-                </h2>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-light">
-                  Whether you are architecting distributed microservices, developing custom RAG and Generative AI pipelines, or seeking a high-caliber engineer — feel free to reach out.
-                </p>
-              </div>
+        {/* === 6. CONTACT & CONNECT SECTION (BORDERLESS EDITORIAL REDESIGN) === */}
+        <section id="contact" className="relative py-24 sm:py-32 px-4 sm:px-6 md:px-10 lg:px-14 bg-black overflow-hidden">
+          {/* Subtle ambient spotlight in background */}
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-white/[0.025] blur-[140px] rounded-full" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Email */}
-                <a
-                  href={`mailto:${profileData.email}`}
-                  className="p-5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-white/50 uppercase">Direct Email</div>
-                    <div className="text-sm font-semibold text-white truncate mt-0.5">{profileData.email}</div>
-                  </div>
-                </a>
+          {/* 3D Geodesic Constellation Globe (Enlarged slightly & shifted right behind cards) */}
+          <div className="pointer-events-none absolute right-[-6%] sm:right-[-4%] md:right-[-2%] lg:right-[0%] xl:right-[1%] top-[-20px] sm:top-[-60px] md:top-[-80px] w-[500px] sm:w-[650px] md:w-[780px] lg:w-[920px] xl:w-[1020px] h-[500px] sm:h-[650px] md:h-[780px] lg:h-[920px] xl:h-[1020px] z-0 overflow-visible opacity-85">
+            <NeuralSphereCanvas />
+          </div>
 
-                {/* Phone */}
-                <a
-                  href={`tel:${profileData.phone}`}
-                  className="p-5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-white/50 uppercase">Phone & Mobile</div>
-                    <div className="text-sm font-semibold text-white font-mono mt-0.5">{profileData.phone}</div>
-                  </div>
-                </a>
+          <div className="relative z-10 max-w-[1520px] mx-auto space-y-12">
+            {/* Header */}
+            <div className="max-w-2xl lg:max-w-3xl">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-5">
+                Ready to Build Next-Generation <span className="text-white">AI Systems?</span>
+              </h2>
 
-                {/* GitHub */}
-                <a
-                  href={profileData.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-                    <GitHubIcon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-white/50 uppercase">GitHub Profile</div>
-                    <div className="text-sm font-semibold text-white mt-0.5">github.com/sodium6 ↗</div>
-                  </div>
-                </a>
+              <p className="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed font-light">
+                Whether you are architecting distributed microservices, developing high-throughput RAG pipelines, or looking for a passionate AI &amp; Full Stack engineer — feel free to reach out anytime.
+              </p>
+            </div>
 
-                {/* CV Download */}
-                <a
-                  href="/Veeranuth_Sukluea_CV.pdf"
-                  download="Veeranuth_Sukluea_CV.pdf"
-                  className="p-5 rounded-2xl bg-white text-black hover:bg-white/90 border border-white transition-all group flex flex-col justify-between shadow-xl"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Download className="w-5 h-5" />
+            {/* 4 Action Cards Grid (Sitting in front of the 3D Globe with glass backdrop) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {/* Email */}
+              <a
+                href={`mailto:${profileData.email}`}
+                className="group relative p-6 rounded-2xl bg-black/40 backdrop-blur-md hover:bg-white/[0.06] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[160px]"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-105 group-hover:border-white/25 transition-all">
+                    <Mail className="w-4 h-4" />
                   </div>
-                  <div>
-                    <div className="text-xs font-mono text-black/60 uppercase">Curriculum Vitae</div>
-                    <div className="text-sm font-bold text-black mt-0.5">Download CV (PDF) ↓</div>
+                  <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-white/45 mb-1">Direct Email</div>
+                  <div className="text-sm font-semibold text-white truncate">{profileData.email}</div>
+                  <div className="text-xs font-mono text-white/50 group-hover:text-white transition-colors mt-2">
+                    Send Email ↗
                   </div>
-                </a>
-              </div>
+                </div>
+              </a>
+
+              {/* Phone */}
+              <a
+                href={`tel:${profileData.phone}`}
+                className="group relative p-6 rounded-2xl bg-black/40 backdrop-blur-md hover:bg-white/[0.06] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[160px]"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-105 group-hover:border-white/25 transition-all">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-white/45 mb-1">Phone & Mobile</div>
+                  <div className="text-sm font-semibold text-white font-mono">{profileData.phone}</div>
+                  <div className="text-xs font-mono text-white/50 group-hover:text-white transition-colors mt-2">
+                    Direct Call ↗
+                  </div>
+                </div>
+              </a>
+
+              {/* GitHub */}
+              <a
+                href={profileData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-6 rounded-2xl bg-black/40 backdrop-blur-md hover:bg-white/[0.06] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[160px]"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-105 group-hover:border-white/25 transition-all">
+                    <GitHubIcon className="w-4 h-4" />
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-white/45 mb-1">GitHub Repos</div>
+                  <div className="text-sm font-semibold text-white">github.com/sodium6</div>
+                  <div className="text-xs font-mono text-white/50 group-hover:text-white transition-colors mt-2">
+                    Open Profile ↗
+                  </div>
+                </div>
+              </a>
+
+              {/* CV Download (Primary Inverted Action Card) */}
+              <a
+                href="/Veeranuth_Sukluea_CV.pdf"
+                download="Veeranuth_Sukluea_CV.pdf"
+                className="group relative p-6 rounded-2xl bg-white text-black hover:bg-white/90 border border-white transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[160px] shadow-[0_0_30px_rgba(255,255,255,0.08)]"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center group-hover:scale-105 transition-all">
+                    <Download className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/10 text-black font-semibold">
+                    PDF DOC
+                  </span>
+                </div>
+                <div>
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-black/60 mb-1">Curriculum Vitae</div>
+                  <div className="text-base font-bold text-black leading-tight">Download CV (PDF)</div>
+                  <div className="text-xs font-mono text-black/75 group-hover:text-black transition-colors mt-2 font-medium flex items-center gap-1">
+                    <span>Get Resume File</span>
+                    <span className="group-hover:translate-y-0.5 transition-transform">↓</span>
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
         </section>
 
         {/* === 7. SITE FOOTER === */}
-        <footer className="py-12 px-4 sm:px-8 md:px-12 lg:px-20 border-t border-white/10 bg-black flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4 font-mono">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <footer className="py-12 px-4 sm:px-8 md:px-12 lg:px-20 bg-black flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4 font-mono">
           <div>
             © 2026 {profileData.name} • AI & Full Stack Engineer
           </div>
