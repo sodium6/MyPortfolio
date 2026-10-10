@@ -118,7 +118,6 @@ const ProjectCard3D = ({ project, onSelect }) => {
 
         {/* Role */}
         <div className="text-xs font-medium text-white/70 mb-5 flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)] animate-pulse" />
           <span className="group-hover:text-white/90 transition-colors">{project.role}</span>
         </div>
 

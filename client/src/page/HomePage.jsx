@@ -315,7 +315,6 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             {project.name}
           </h2>
           <p className="text-white/75 text-sm sm:text-base font-medium flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-white" />
             <span>{project.role}</span>
           </p>
 
